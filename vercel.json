@@ -1,22 +1,13 @@
 {
-        "builds": [
-          {
-            "src": "twitter/wsgi.py",
-            "use": "@vercel/python",
-            "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" },
-            "env": {
-              "DATABASE_URL": "@postgres"
-            }
-          }
-        ],
-        "routes": [
-          { "src": "/static/(.*)", "dest": "/static/$1" },
-          { "src": "/media/(.*)", "dest": "/media/$1" },
-          { "src": "/(.*)", "dest": "twitter/wsgi.py" }
-        ],
-        "env": {
-          "DATABASE_URL": "postgres://postgres:Chandra@1234@localhost:5432/twitter_database"
-
+    "builds": [{
+        "src": "twitter/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "twitter/wsgi.py"
         }
-      }
-      
+    ]
+}
